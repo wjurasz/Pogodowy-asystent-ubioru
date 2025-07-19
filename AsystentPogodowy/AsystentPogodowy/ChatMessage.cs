@@ -6,3 +6,4 @@ namespace AsystentPogodowy
         public bool IsUsersMessage { get; set; }
     }
 }
+// init sdfjsdikfbhjsdhbfi
