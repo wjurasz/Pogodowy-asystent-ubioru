@@ -22,7 +22,7 @@
     <input @bind="city" class="form-control" placeholder="Podaj miasto" />
 </div>
 
-<button @onclick="SendPrompt" class="btn btn-dark">Pobierz pogodę</button>
+@* <button @onclick="LoadWeather" class="btn btn-dark">Pobierz pogodę</button> *@
 
 @if (isLoading)
 {
@@ -51,9 +51,9 @@
 
 <div class="chat-container">
     <div class="input-group mb-3">
-        <textarea @bind="chatMessage" class="form-control" placeholder="Zapytaj chat..." readonly></textarea>
+        <textarea @bind="chatMessage" class="form-control" placeholder="" readonly></textarea>
     </div>
-    <button @onclick="() => AskChat()" class="btn btn-dark">Zapytaj chat</button>
+    <button @onclick="SendPrompt" class="btn btn-dark">Zapytaj chat</button>
 </div>
 
 @code {
@@ -103,6 +103,7 @@
 
         // After creating the prompt, get the weather data
         await LoadWeather();
+        await AskChat();
     }
 
     private async Task AskChat()
@@ -119,7 +120,7 @@
                     new JsonObject
                     {
                         ["role"] = "system",
-                        ["content"] = "You are a helpful weather assistant recommending what type of outfit should I wear."
+                        ["content"] = "You are a helpful weather assistant recommending what type of outfit should I wear. Odpowiedz po polsku"
                     },
                     new JsonObject
                     {

@@ -150,3 +150,4 @@ D:\projektzespołowy\AsystentPogodowy\AsystentPogodowy\obj\Debug\net8.0\Asystent
 D:\projektzespołowy\AsystentPogodowy\AsystentPogodowy\obj\Debug\net8.0\ref\AsystentPogodowy.dll
 D:\projektzespołowy\AsystentPogodowy\ASystentPogodowy\bin\Debug\net8.0\Microsoft.Extensions.PlatformAbstractions.dll
 D:\projektzespołowy\AsystentPogodowy\ASystentPogodowy\bin\Debug\net8.0\Swashbuckle.SwaggerUi.dll
+D:\projektzespołowy\AsystentPogodowy\AsystentPogodowy\obj\Debug\net8.0\AsystentPogodowy.sourcelink.json
