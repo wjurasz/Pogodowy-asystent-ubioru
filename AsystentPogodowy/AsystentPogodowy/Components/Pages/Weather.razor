@@ -1,0 +1,140 @@
+﻿@page "/weather"
+@using System.Text.Json.Nodes
+@inject WeatherService WeatherService
+@inject GroqApiClient GroqApiClient
+@rendermode InteractiveServer
+
+<h3 class="text-primary">🌦️ Prognoza pogody i rekomendacje ubioru</h3>
+
+<div class="input-group mb-3">
+    <input @bind="userName" class="form-control" placeholder="Podaj swoje imię" />
+</div>
+
+<div class="input-group mb-3">
+    <input @bind="weatherpreferation" class="form-control" placeholder="Jaką pogodę lubisz?" />
+</div>
+
+<div class="input-group mb-3">
+    <input @bind="transportation" class="form-control" placeholder="Środek transportu?" />
+</div>
+
+<div class="input-group mb-3">
+    <input @bind="city" class="form-control" placeholder="Podaj miasto" />
+</div>
+
+<button @onclick="SendPrompt" class="btn btn-dark">Pobierz pogodę</button>
+
+@if (isLoading)
+{
+    <div class="alert alert-info">⏳ Pobieranie danych...</div>
+}
+
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    <div class="alert alert-danger">❌ @errorMessage</div>
+}
+
+@if (weatherData != null)
+{
+    <div class="card shadow-lg p-4">
+        <h4 class="text-success">@weatherData.Location.Name, @weatherData.Location.Country</h4>
+        <div class="d-flex align-items-center">
+            <img src="@weatherData.Current.Condition.Icon" alt="Ikona pogody" class="weather-icon me-3" />
+            <div>
+                <p class="fs-5">Temperatura: @weatherData.Current.Temp_C °C</p>
+                <p class="fs-5">Opis: @weatherData.Current.Condition.Text</p>
+                <p class="fs-5">Wilgotność: @weatherData.Current.Humidity %</p>
+            </div>
+        </div>
+    </div>
+}
+
+<div class="chat-container">
+    <div class="input-group mb-3">
+        <textarea @bind="chatMessage" class="form-control" placeholder="Zapytaj chat..." readonly></textarea>
+    </div>
+    <button @onclick="() => AskChat()" class="btn btn-dark">Zapytaj chat</button>
+</div>
+
+@code {
+    private string userName;
+    private string weatherpreferation;
+    private string transportation;
+    private string city;
+    private string chatMessage;
+    private string prompt;
+    private bool isLoading = false;
+    private string? errorMessage;
+    private WeatherData? weatherData;
+
+    private async Task LoadWeather()
+    {
+        if (string.IsNullOrEmpty(city)) return;
+
+        try
+        {
+            isLoading = true;
+            weatherData = await WeatherService.GetWeatherAsync(city);
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Błąd: {ex.Message}";
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private async Task SendPrompt()
+    {
+        if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(weatherpreferation) || string.IsNullOrEmpty(transportation) || string.IsNullOrEmpty(city)) 
+            return;
+
+        // Automatically create the prompt from the form fields
+        prompt = $@"
+        User Info:
+        - My name is: {userName}
+        - I like: {weatherpreferation} weather
+        - I will use: {transportation} as transportation
+        - In City: {city}
+
+        Please provide a weather-related recommendation based on this information. Don't forget to mention my name and the weather I like, and the type of transportation I will use.";
+
+        // After creating the prompt, get the weather data
+        await LoadWeather();
+    }
+
+    private async Task AskChat()
+    {
+        if (string.IsNullOrEmpty(prompt)) return;
+
+        try
+        {
+            var response = await GroqApiClient.CreateChatCompletionAsync(new JsonObject
+            {
+                ["model"] = "gemma2-9b-it", // Ensure this is the correct model ID
+                ["messages"] = new JsonArray
+                {
+                    new JsonObject
+                    {
+                        ["role"] = "system",
+                        ["content"] = "You are a helpful weather assistant recommending what type of outfit should I wear."
+                    },
+                    new JsonObject
+                    {
+                        ["role"] = "user",
+                        ["content"] = prompt // Pass the prompt here
+                    }
+                }
+            });
+
+            var responseMessage = response?["choices"]?[0]?["message"]?["content"]?.GetValue<string>();
+            chatMessage = responseMessage ?? "Nie udało się uzyskać odpowiedzi.";
+        }
+        catch (Exception ex)
+        {
+            chatMessage = $"Błąd: {ex.Message}";
+        }
+    }
+}
