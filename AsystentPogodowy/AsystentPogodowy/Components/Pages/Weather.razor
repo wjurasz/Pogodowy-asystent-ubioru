@@ -3,57 +3,124 @@
 @inject WeatherService WeatherService
 @inject GroqApiClient GroqApiClient
 @rendermode InteractiveServer
+<PageTitle>Asystent</PageTitle>
 
-<h3 class="text-primary">🌦️ Prognoza pogody i rekomendacje ubioru</h3>
+<h3 class="text-primary text-center">🌦️ Prognoza pogody i rekomendacje ubioru</h3>
 
-<div class="input-group mb-3">
-    <input @bind="userName" class="form-control" placeholder="Podaj swoje imię" />
-</div>
+<style>
+    .main-layout {
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
 
-<div class="input-group mb-3">
-    <input @bind="weatherpreferation" class="form-control" placeholder="Jaką pogodę lubisz?" />
-</div>
+    .form-section {
+        flex: 1;
+        max-width: 400px;
+    }
 
-<div class="input-group mb-3">
-    <input @bind="transportation" class="form-control" placeholder="Środek transportu?" />
-</div>
+    .form-section .input-group {
+        margin-bottom: 15px;
+    }
 
-<div class="input-group mb-3">
-    <input @bind="city" class="form-control" placeholder="Podaj miasto" />
-</div>
+    .button-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        margin-top: 10px;
+    }
 
-@* <button @onclick="LoadWeather" class="btn btn-dark">Pobierz pogodę</button> *@
+    .button1 {
+        color: rgb(0, 0, 0);
+        font-size: 17px;
+        background-color: rgb(255, 255, 255);
+        padding: 20px 40px;
+        border-radius: 50px;
+        border: 1px solid rgb(0, 0, 0);
+        cursor: pointer;
+        transition: 0.5s;
+        text-decoration: none;
+    }
 
-@if (isLoading)
-{
-    <div class="alert alert-info">⏳ Pobieranie danych...</div>
-}
+    .button1:hover {
+        background: linear-gradient(222deg,#ffffff, #0d6efd);
+        transform: scale(1.05);
+    }
 
-@if (!string.IsNullOrEmpty(errorMessage))
-{
-    <div class="alert alert-danger">❌ @errorMessage</div>
-}
+    .result-section {
+        flex: 2;
+        min-width: 400px;
+    }
 
-@if (weatherData != null)
-{
-    <div class="card shadow-lg p-4">
-        <h4 class="text-success">@weatherData.Location.Name, @weatherData.Location.Country</h4>
-        <div class="d-flex align-items-center">
-            <img src="@weatherData.Current.Condition.Icon" alt="Ikona pogody" class="weather-icon me-3" />
-            <div>
-                <p class="fs-5">Temperatura: @weatherData.Current.Temp_C °C</p>
-                <p class="fs-5">Opis: @weatherData.Current.Condition.Text</p>
-                <p class="fs-5">Wilgotność: @weatherData.Current.Humidity %</p>
-            </div>
+    .chat-container textarea {
+        width: 100%;
+        height: 200px;
+        resize: none;
+    }
+</style>
+
+<div class="main-layout">
+    <!-- LEWA STRONA: formularz -->
+    <div class="form-section">
+        <div class="input-group">
+            <input @bind="city" class="form-control" placeholder="Podaj miasto" />
         </div>
-    </div>
-}
 
-<div class="chat-container">
-    <div class="input-group mb-3">
-        <textarea @bind="chatMessage" class="form-control" placeholder="" readonly></textarea>
+        <div class="input-group">
+            <input @bind="userName" class="form-control" placeholder="Podaj swoje imię" />
+        </div>
+
+        <div class="input-group">
+            <input @bind="weatherpreferation" class="form-control" placeholder="Jaką pogodę lubisz?" />
+        </div>
+
+        <div class="input-group">
+            <input @bind="transportation" class="form-control" placeholder="Środek transportu?" />
+        </div>
+
+        <div class="button-container">
+            <button @onclick="LoadWeather" class="button1">Pobierz pogodę</button>
+            <button @onclick="SendPrompt" class="button1">Zapytaj chat</button>
+        </div>
+
+        @if (isLoading)
+        {
+            <div class="alert alert-info mt-3">⏳ Pobieranie danych...</div>
+        }
+
+        @if (!string.IsNullOrEmpty(errorMessage))
+        {
+            <div class="alert alert-danger mt-2">❌ @errorMessage</div>
+        }
     </div>
-    <button @onclick="SendPrompt" class="btn btn-dark">Zapytaj chat</button>
+
+    <!-- PRAWA STRONA: wyniki -->
+    <div class="result-section">
+        @if (weatherData != null)
+        {
+            <div class="card shadow-lg p-4 mb-3">
+                <h4 class="text-success">@weatherData.Location.Name, @weatherData.Location.Country</h4>
+                <div class="d-flex align-items-center">
+                    <img src="@weatherData.Current.Condition.Icon" alt="Ikona pogody" class="weather-icon me-3" />
+                    <div>
+                        <p class="fs-5">Temperatura: @weatherData.Current.Temp_C °C</p>
+                        <p class="fs-5">Opis: @weatherData.Current.Condition.Text</p>
+                        <p class="fs-5">Wilgotność: @weatherData.Current.Humidity %</p>
+                    </div>
+                </div>
+            </div>
+        }
+
+        @if (!string.IsNullOrWhiteSpace(chatMessage))
+        {
+            <div class="card shadow-lg p-4 mb-3">
+                <h5 class="text-primary">💬 Rekomendacja</h5>
+                <p>@chatMessage</p>
+            </div>
+        }
+    </div>
 </div>
 
 @code {
@@ -74,11 +141,13 @@
         try
         {
             isLoading = true;
+            errorMessage = null;
             weatherData = await WeatherService.GetWeatherAsync(city);
         }
         catch (Exception ex)
         {
             errorMessage = $"Błąd: {ex.Message}";
+            weatherData = null;
         }
         finally
         {
@@ -88,21 +157,33 @@
 
     private async Task SendPrompt()
     {
-        if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(weatherpreferation) || string.IsNullOrEmpty(transportation) || string.IsNullOrEmpty(city)) 
+        if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(weatherpreferation) || string.IsNullOrEmpty(transportation) || string.IsNullOrEmpty(city))
+        {
+            chatMessage = "❌ Uzupełnij wszystkie pola.";
             return;
+        }
 
-        // Automatically create the prompt from the form fields
-        prompt = $@"
-        User Info:
-        - My name is: {userName}
-        - I like: {weatherpreferation} weather
-        - I will use: {transportation} as transportation
-        - In City: {city}
-
-        Please provide a weather-related recommendation based on this information. Don't forget to mention my name and the weather I like, and the type of transportation I will use.";
-
-        // After creating the prompt, get the weather data
         await LoadWeather();
+
+        if (weatherData == null || weatherData.Current == null || weatherData.Location == null || weatherData.Current.Condition == null)
+        {
+            chatMessage = "❌ Nie udało się pobrać danych pogodowych.";
+            return;
+        }
+
+        prompt = $@"
+Cześć! Mam dla Ciebie dane pogodowe dla miasta {weatherData.Location.Name}:
+
+- Temperatura: {weatherData.Current.Temp_C}°C
+- Opis: {weatherData.Current.Condition.Text}
+- Wilgotność: {weatherData.Current.Humidity}%
+- Kraj: {weatherData.Location.Country}
+
+Użytkownik nazywa się {userName}, preferuje pogodę: {weatherpreferation}, przemieszcza się: {transportation}.
+
+Na podstawie powyższych danych, daj praktyczną poradę, jak się dziś ubrać, powiedz też jaka jest pogoda i jakie są warunki. Nie pisz, skąd masz dane — po prostu udziel konkretnej rady po polsku.
+";
+
         await AskChat();
     }
 
@@ -114,18 +195,18 @@
         {
             var response = await GroqApiClient.CreateChatCompletionAsync(new JsonObject
             {
-                ["model"] = "gemma2-9b-it", // Ensure this is the correct model ID
+                ["model"] = "gemma2-9b-it",
                 ["messages"] = new JsonArray
                 {
                     new JsonObject
                     {
                         ["role"] = "system",
-                        ["content"] = "You are a helpful weather assistant recommending what type of outfit should I wear. Odpowiedz po polsku"
+                        ["content"] = "Na podstawie informacji pogodowych dla miasta , podaj szczegółową prognozę pogody na dziś. Uwzględnij nie tylko temperaturę, ale także opady, wilgotność i ogólne warunki atmosferyczne. Następnie zaproponuj, jak należy się ubrać, aby dostosować się do tych warunków (np. ciepło, przeciwdeszczowo, przewiewnie). Twoja odpowiedź ma być praktyczna i krótka — tak jakbyś doradzał komuś przed wyjściem z domu. Nie informuj, skąd masz dane — po prostu udziel porady na ich podstawie. PAMIĘTAJ MASZ ODPOWIEDZIEĆ PO POLSKU"
                     },
                     new JsonObject
                     {
                         ["role"] = "user",
-                        ["content"] = prompt // Pass the prompt here
+                        ["content"] = prompt
                     }
                 }
             });

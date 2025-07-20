@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AsystentPogodowy")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f83104efae49fcff829cff0345c1b926a65489c8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e4f705f9b0b68973b38fdec882c19315f9963152")]
 [assembly: System.Reflection.AssemblyProductAttribute("AsystentPogodowy")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AsystentPogodowy")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

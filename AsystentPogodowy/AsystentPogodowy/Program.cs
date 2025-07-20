@@ -28,6 +28,10 @@ builder.Services.AddSingleton<GroqApiClient>(provider =>
 });
 builder.Services.AddSingleton<ChatMessage>();
 
+builder.Services.AddServerSideBlazor()
+    .AddCircuitOptions(options => { options.DetailedErrors = true; });
+
+
 builder.Services.AddAuthentication(options =>
     {
         options.DefaultScheme = IdentityConstants.ApplicationScheme;

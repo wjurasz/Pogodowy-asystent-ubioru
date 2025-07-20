@@ -10,23 +10,24 @@
 @inject NavigationManager NavigationManager
 @inject IdentityRedirectManager RedirectManager
 
-<PageTitle>Register confirmation</PageTitle>
+<PageTitle>Potwierdzenie rejestracji</PageTitle>
 
-<h1>Register confirmation</h1>
+<h1>Potwierdzenie rejestracji</h1>
 
 <StatusMessage Message="@statusMessage" />
 
 @if (emailConfirmationLink is not null)
 {
     <p>
-        This app does not currently have a real email sender registered, see <a href="https://aka.ms/aspaccountconf">these docs</a> for how to configure a real email sender.
-        Normally this would be emailed: <a href="@emailConfirmationLink">Click here to confirm your account</a>
+        Kliknij przycisk aby potwierdzić rejestrację konta!
     </p>
+    <a class="btn btn-success mt-2" href="@emailConfirmationLink">Potwierdź konto</a>
 }
 else
 {
-    <p>Please check your email to confirm your account.</p>
+    <p>Sprawdź swoją skrzynkę e-mail, aby potwierdzić rejestrację konta.</p>
 }
+
 
 @code {
     private string? emailConfirmationLink;
@@ -52,11 +53,11 @@ else
         if (user is null)
         {
             HttpContext.Response.StatusCode = StatusCodes.Status404NotFound;
-            statusMessage = "Error finding user for unspecified email";
+            statusMessage = "Błąd: Nie znaleziono użytkownika o podanym adresie e-mail.";
         }
         else if (EmailSender is IdentityNoOpEmailSender)
         {
-            // Once you add a real email sender, you should remove this code that lets you confirm the account
+            // To tymczasowe rozwiązanie — usuń ten fragment, gdy dodasz prawdziwą wysyłkę maili
             var userId = await UserManager.GetUserIdAsync(user);
             var code = await UserManager.GenerateEmailConfirmationTokenAsync(user);
             code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));

@@ -1,29 +1,29 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\projektzespo\u0142owy\\AsystentPogodowy\\",
+  "WorkspaceRootPath": "D:\\dzia\u0142\u0105\\Pogodowy-asystent-ubioru\\AsystentPogodowy\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\projektzespo\u0142owy\\AsystentPogodowy\\AsystentPogodowy\\Data\\Migrations\\20250719164754_init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:AsystentPogodowy\\Data\\Migrations\\20250719164754_init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4727D435-0E79-4257-9487-34A7A8EDF7CF}|AsystentPogodowy\\AsystentPogodowy.csproj|d:\\dzia\u0142\u0105\\pogodowy-asystent-ubioru\\asystentpogodowy\\asystentpogodowy\\data\\migrations\\20250719164754_init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4727D435-0E79-4257-9487-34A7A8EDF7CF}|AsystentPogodowy\\AsystentPogodowy.csproj|solutionrelative:asystentpogodowy\\data\\migrations\\20250719164754_init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4727D435-0E79-4257-9487-34A7A8EDF7CF}|AsystentPogodowy\\AsystentPogodowy.csproj|d:\\projektzespo\u0142owy\\asystentpogodowy\\asystentpogodowy\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{4727D435-0E79-4257-9487-34A7A8EDF7CF}|AsystentPogodowy\\AsystentPogodowy.csproj|d:\\dzia\u0142\u0105\\pogodowy-asystent-ubioru\\asystentpogodowy\\asystentpogodowy\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{4727D435-0E79-4257-9487-34A7A8EDF7CF}|AsystentPogodowy\\AsystentPogodowy.csproj|solutionrelative:asystentpogodowy\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4727D435-0E79-4257-9487-34A7A8EDF7CF}|AsystentPogodowy\\AsystentPogodowy.csproj|d:\\projektzespo\u0142owy\\asystentpogodowy\\asystentpogodowy\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{4727D435-0E79-4257-9487-34A7A8EDF7CF}|AsystentPogodowy\\AsystentPogodowy.csproj|d:\\dzia\u0142\u0105\\pogodowy-asystent-ubioru\\asystentpogodowy\\asystentpogodowy\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{4727D435-0E79-4257-9487-34A7A8EDF7CF}|AsystentPogodowy\\AsystentPogodowy.csproj|solutionrelative:asystentpogodowy\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4727D435-0E79-4257-9487-34A7A8EDF7CF}|AsystentPogodowy\\AsystentPogodowy.csproj|d:\\projektzespo\u0142owy\\asystentpogodowy\\asystentpogodowy\\data\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4727D435-0E79-4257-9487-34A7A8EDF7CF}|AsystentPogodowy\\AsystentPogodowy.csproj|d:\\dzia\u0142\u0105\\pogodowy-asystent-ubioru\\asystentpogodowy\\asystentpogodowy\\data\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4727D435-0E79-4257-9487-34A7A8EDF7CF}|AsystentPogodowy\\AsystentPogodowy.csproj|solutionrelative:asystentpogodowy\\data\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4727D435-0E79-4257-9487-34A7A8EDF7CF}|AsystentPogodowy\\AsystentPogodowy.csproj|d:\\projektzespo\u0142owy\\asystentpogodowy\\asystentpogodowy\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4727D435-0E79-4257-9487-34A7A8EDF7CF}|AsystentPogodowy\\AsystentPogodowy.csproj|d:\\dzia\u0142\u0105\\pogodowy-asystent-ubioru\\asystentpogodowy\\asystentpogodowy\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4727D435-0E79-4257-9487-34A7A8EDF7CF}|AsystentPogodowy\\AsystentPogodowy.csproj|solutionrelative:asystentpogodowy\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4727D435-0E79-4257-9487-34A7A8EDF7CF}|AsystentPogodowy\\AsystentPogodowy.csproj|d:\\projektzespo\u0142owy\\asystentpogodowy\\asystentpogodowy\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4727D435-0E79-4257-9487-34A7A8EDF7CF}|AsystentPogodowy\\AsystentPogodowy.csproj|d:\\dzia\u0142\u0105\\pogodowy-asystent-ubioru\\asystentpogodowy\\asystentpogodowy\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4727D435-0E79-4257-9487-34A7A8EDF7CF}|AsystentPogodowy\\AsystentPogodowy.csproj|solutionrelative:asystentpogodowy\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -40,9 +40,9 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "20250719164754_init.cs",
-              "DocumentMoniker": "D:\\projektzespo\u0142owy\\AsystentPogodowy\\AsystentPogodowy\\Data\\Migrations\\20250719164754_init.cs",
+              "DocumentMoniker": "D:\\dzia\u0142\u0105\\Pogodowy-asystent-ubioru\\AsystentPogodowy\\AsystentPogodowy\\Data\\Migrations\\20250719164754_init.cs",
               "RelativeDocumentMoniker": "AsystentPogodowy\\Data\\Migrations\\20250719164754_init.cs",
-              "ToolTip": "D:\\projektzespo\u0142owy\\AsystentPogodowy\\AsystentPogodowy\\Data\\Migrations\\20250719164754_init.cs",
+              "ToolTip": "D:\\dzia\u0142\u0105\\Pogodowy-asystent-ubioru\\AsystentPogodowy\\AsystentPogodowy\\Data\\Migrations\\20250719164754_init.cs",
               "RelativeToolTip": "AsystentPogodowy\\Data\\Migrations\\20250719164754_init.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -53,66 +53,61 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\projektzespo\u0142owy\\AsystentPogodowy\\AsystentPogodowy\\appsettings.json",
+              "DocumentMoniker": "D:\\dzia\u0142\u0105\\Pogodowy-asystent-ubioru\\AsystentPogodowy\\AsystentPogodowy\\appsettings.json",
               "RelativeDocumentMoniker": "AsystentPogodowy\\appsettings.json",
-              "ToolTip": "D:\\projektzespo\u0142owy\\AsystentPogodowy\\AsystentPogodowy\\appsettings.json",
+              "ToolTip": "D:\\dzia\u0142\u0105\\Pogodowy-asystent-ubioru\\AsystentPogodowy\\AsystentPogodowy\\appsettings.json",
               "RelativeToolTip": "AsystentPogodowy\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-07-19T16:46:58.87Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-19T16:46:58.87Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "launchSettings.json",
-              "DocumentMoniker": "D:\\projektzespo\u0142owy\\AsystentPogodowy\\AsystentPogodowy\\Properties\\launchSettings.json",
+              "DocumentMoniker": "D:\\dzia\u0142\u0105\\Pogodowy-asystent-ubioru\\AsystentPogodowy\\AsystentPogodowy\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "AsystentPogodowy\\Properties\\launchSettings.json",
-              "ToolTip": "D:\\projektzespo\u0142owy\\AsystentPogodowy\\AsystentPogodowy\\Properties\\launchSettings.json",
+              "ToolTip": "D:\\dzia\u0142\u0105\\Pogodowy-asystent-ubioru\\AsystentPogodowy\\AsystentPogodowy\\Properties\\launchSettings.json",
               "RelativeToolTip": "AsystentPogodowy\\Properties\\launchSettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-07-19T16:46:44.348Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-19T16:46:44.348Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "Program.cs",
-              "DocumentMoniker": "D:\\projektzespo\u0142owy\\AsystentPogodowy\\AsystentPogodowy\\Program.cs",
+              "DocumentMoniker": "D:\\dzia\u0142\u0105\\Pogodowy-asystent-ubioru\\AsystentPogodowy\\AsystentPogodowy\\Program.cs",
               "RelativeDocumentMoniker": "AsystentPogodowy\\Program.cs",
-              "ToolTip": "D:\\projektzespo\u0142owy\\AsystentPogodowy\\AsystentPogodowy\\Program.cs",
+              "ToolTip": "D:\\dzia\u0142\u0105\\Pogodowy-asystent-ubioru\\AsystentPogodowy\\AsystentPogodowy\\Program.cs",
               "RelativeToolTip": "AsystentPogodowy\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-19T16:46:28.663Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-19T16:46:28.663Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "D:\\projektzespo\u0142owy\\AsystentPogodowy\\AsystentPogodowy\\Data\\ApplicationDbContext.cs",
+              "DocumentMoniker": "D:\\dzia\u0142\u0105\\Pogodowy-asystent-ubioru\\AsystentPogodowy\\AsystentPogodowy\\Data\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "AsystentPogodowy\\Data\\ApplicationDbContext.cs",
-              "ToolTip": "D:\\projektzespo\u0142owy\\AsystentPogodowy\\AsystentPogodowy\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "D:\\dzia\u0142\u0105\\Pogodowy-asystent-ubioru\\AsystentPogodowy\\AsystentPogodowy\\Data\\ApplicationDbContext.cs",
               "RelativeToolTip": "AsystentPogodowy\\Data\\ApplicationDbContext.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwAUAAABpAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-19T16:46:22.798Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-19T16:46:22.798Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "ApplicationUser.cs",
-              "DocumentMoniker": "D:\\projektzespo\u0142owy\\AsystentPogodowy\\AsystentPogodowy\\Data\\ApplicationUser.cs",
+              "DocumentMoniker": "D:\\dzia\u0142\u0105\\Pogodowy-asystent-ubioru\\AsystentPogodowy\\AsystentPogodowy\\Data\\ApplicationUser.cs",
               "RelativeDocumentMoniker": "AsystentPogodowy\\Data\\ApplicationUser.cs",
-              "ToolTip": "D:\\projektzespo\u0142owy\\AsystentPogodowy\\AsystentPogodowy\\Data\\ApplicationUser.cs",
+              "ToolTip": "D:\\dzia\u0142\u0105\\Pogodowy-asystent-ubioru\\AsystentPogodowy\\AsystentPogodowy\\Data\\ApplicationUser.cs",
               "RelativeToolTip": "AsystentPogodowy\\Data\\ApplicationUser.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-19T16:46:22.076Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-19T16:46:22.076Z"
             }
           ]
         }

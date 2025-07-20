@@ -1,23 +1,150 @@
 ﻿@inherits LayoutComponentBase
+@inject NavigationManager NavigationManager
+@implements IDisposable
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
-    </div>
+<PageTitle>Asystent Pogodowy</PageTitle>
 
-    <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary px-4">
+        <a class="navbar-brand" href="">Strona Głowna</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                @* <li class="nav-item">
+                    <NavLink class="nav-link" href="" Match="NavLinkMatch.All">Home</NavLink>
+                </li> *@
+                <li class="nav-item">
+                    <a class="nav-link" href="dokumentacja.pdf" target="_blank">Dokumentacja</a>
+                </li>
+                <AuthorizeView>
+                    <li class="nav-item">
+                        <NavLink class="nav-link" href="weather">Asystent</NavLink>
+                    </li>
+                @* <li class="nav-item">
+                    <NavLink class="nav-link" href="auth">Auth Required</NavLink>
+                </li> *@
+                </AuthorizeView>
+            </ul>
+
+            <ul class="navbar-nav">
+                <AuthorizeView>
+                    <Authorized>
+                        <li class="user">
+                            <NavLink class="nav-link" href="Account/Manage">@context.User.Identity?.Name</NavLink>
+                        </li>
+                        <li class="nav-item">
+                            <form action="Account/Logout" method="post" class="d-inline">
+                                <AntiforgeryToken />
+                                <input type="hidden" name="ReturnUrl" value="@currentUrl" />
+                                <button type="submit" class="buttonlog">Wyloguj</button>
+                            </form>
+                        </li>
+                    </Authorized>
+                   <NotAuthorized>
+                    <div class="auth-links d-flex">
+                        <li class="nav-item">
+                            <NavLink class="nav-linkreg" href="Account/Register">Zarejestruj</NavLink>
+                        </li>
+                        <li class="nav-item">
+                            <NavLink class="nav-linkreg" href="Account/Login">Zaloguj</NavLink>
+                        </li>
+                    </div>
+                </NotAuthorized>
+                </AuthorizeView>
+            </ul>
         </div>
+    </nav>
+</header>
 
-        <article class="content px-4">
-            @Body
-        </article>
-    </main>
-</div>
+<main class="container mt-4">
+    @Body
+</main>
 
 <div id="blazor-error-ui">
     An unhandled error has occurred.
     <a href="" class="reload">Reload</a>
     <a class="dismiss">🗙</a>
 </div>
+
+@code {
+    private string? currentUrl;
+
+    protected override void OnInitialized()
+    {
+        currentUrl = NavigationManager.ToBaseRelativePath(NavigationManager.Uri);
+        NavigationManager.LocationChanged += OnLocationChanged;
+    }
+
+    private void OnLocationChanged(object? sender, LocationChangedEventArgs e)
+    {
+        currentUrl = NavigationManager.ToBaseRelativePath(e.Location);
+        StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        NavigationManager.LocationChanged -= OnLocationChanged;
+    }
+}
+<style>
+
+.navbar-brand{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 22px;
+}
+
+.nav-link{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+}
+
+.nav-linkreg {
+    color: #fff;
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-right: 10px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: transform 0.3s ease, color 0.3s ease;
+    display: inline-block; 
+}
+
+.nav-linkreg:hover {
+    transform: scale(1.2);
+    color: #ffffff;        
+}
+
+
+.auth-container {
+    display: flex;
+    align-items: center;
+}
+
+.user {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    color: white;
+    margin-right: 20px; 
+}
+
+
+.buttonlog{
+    border-radius: 80%;
+    background-color: #0d6efd;
+    border: 1px black;
+    padding: 10px;
+    color:  white;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.buttonlog:hover{
+    transform: scale(1.3);
+    color: rgb(255, 255, 255);
+}
+
+</style>
